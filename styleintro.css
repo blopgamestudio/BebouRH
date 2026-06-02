@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    font-family:'Orbitron', sans-serif;
+    background:#08110c;
+    color:#9effc6;
+    overflow:hidden;
+    position:relative;
+}
+
+.background-grid{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    background:
+        linear-gradient(rgba(0,255,120,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,120,0.06) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    animation:gridMove 12s linear infinite;
+}
+
+@keyframes gridMove{
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(40px);
+    }
+}
+
+.intro-container{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+    height:100%;
+}
+
+.intro-panel{
+
+    width:900px;
+    max-width:90%;
+
+    padding:60px;
+
+    text-align:center;
+
+    border:1px solid rgba(0,255,140,0.25);
+
+    background:rgba(0,20,10,0.85);
+
+    box-shadow:
+        0 0 15px rgba(0,255,140,0.15),
+        0 0 50px rgba(0,255,140,0.08);
+}
+
+.status-line{
+    color:#5dff8f;
+    font-size:0.8rem;
+    letter-spacing:3px;
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    text-transform:uppercase;
+}
+
+h1 span{
+    color:#38ff9d;
+    text-shadow:0 0 15px rgba(56,255,157,0.6);
+}
+
+.intro-text{
+    color:#a9d9b7;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.launch-button{
+
+    display:inline-block;
+
+    padding:18px 40px;
+
+    text-decoration:none;
+
+    color:#08110c;
+
+    font-weight:bold;
+
+    background:#43ff9e;
+
+    border:2px solid #43ff9e;
+
+    transition:all 0.25s ease;
+}
+
+.launch-button:hover{
+
+    background:transparent;
+
+    color:#43ff9e;
+
+    box-shadow:0 0 20px rgba(67,255,158,0.4);
+}
+
+footer{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:20px;
+
+    text-align:center;
+
+    color:rgba(158,255,198,0.45);
+
+    font-size:0.75rem;
+
+    letter-spacing:2px;
+
+    z-index:5;
+}

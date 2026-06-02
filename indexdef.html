@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>C21 ORBAT RH</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="noise"></div>
+<header class="topbar">
+  <div>
+    <span class="eyebrow">UNSC / C21 RH TERMINAL</span>
+    <h1>ORBAT RH — 21st Company · V6 RH</h1>
+  </div>
+  <div class="status"><span id="saveState">BDD locale prête</span><button id="exportBtn">Exporter JSON</button><button id="resetBtn">Reset Excel</button></div>
+</header>
+<nav class="tabs">
+  <button class="tab active" data-view="dashboard">Dashboard</button>
+  <button class="tab" data-view="personnel">Fiches personnel</button>
+  <button class="tab" data-view="hierarchie">Hiérarchie</button>
+  <button class="tab" data-view="stocks">Matériel & Logistique</button>
+</nav>
+<main>
+  <section id="dashboard" class="view active">
+    <div class="grid kpis">
+      <div class="card"><b id="kpiPersonnel">0</b><span>personnages</span></div>
+      <div class="card"><b id="kpiGrades">0</b><span>grades</span></div>
+      <div class="card"><b id="kpiFormations">0</b><span>formations</span></div>
+      <div class="card"><b id="kpiSecondaires">0</b><span>persos secondaires</span></div>
+    </div>
+    <div class="dash-charts">
+      <div class="panel compact"><h2>Répartition formations</h2><div id="formationBars" class="bars small"></div></div>
+      <div class="panel compact"><h2>Répartition grades</h2><div id="gradeBars" class="bars small"></div></div>
+    </div>
+  </section>
+
+  <section id="personnel" class="view">
+    <div class="toolbar"><input id="search" placeholder="Recherche nom, grade, médaille, formation…"><select id="gradeFilter"><option value="">Tous les grades</option></select><select id="formationFilter"><option value="">Toutes formations</option></select><select id="presenceFilter"><option value="">Toute présence</option></select><button id="newBtn">+ Ajouter</button></div>
+    <div class="layout">
+      <div class="list" id="personList"></div>
+      <form class="editor" id="editor">
+        <h2>Fiche Personnel</h2>
+        <input name="id" type="hidden">
+        <label>Nom<input name="nom"></label>
+        <label>Grade<select name="grade"></select></label>
+        <label>OP<input name="op"></label>
+        <label>Rôle / Affectation<input name="role"></label>
+        <label>Spécialisation<select name="specialisation"><option value="">Aucune</option></select></label>
+        <label>Présence<select name="presence"><option>Actif</option><option>Fantôme</option><option>Cryo</option></select></label>
+        <div class="fieldblock"><span>Formations</span><div id="formationChecks" class="checks"></div></div>
+        <div class="fieldblock"><span>Médailles / décorations</span><div id="medalChecks" class="checks medalchecks"></div></div>
+        <label>Notes RH<textarea name="notes"></textarea></label>
+        <div class="actions"><button type="submit">Sauvegarder</button><button type="button" id="deleteBtn">Supprimer</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="hierarchie" class="view">
+    <div class="panel"><h2>Arborescence hiérarchique</h2><p class="muted">Vue reconstruite depuis l’ORBAT extrait : unités en branches, personnel trié par niveau de grade quand identifiable.</p><div id="hierarchyTree" class="tree"></div></div>
+  </section>
+
+  <section id="stocks" class="view"><div class="stockgrid" id="stockGrid"></div></section>
+</main>
+<footer>Fake BDD: sauvegarde dans localStorage du navigateur. Source: Orbat Marines.xlsx · V6 présence RH intégrée</footer>
+<script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>
